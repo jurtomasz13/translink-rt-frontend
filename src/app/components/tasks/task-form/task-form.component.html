@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <p class="title">{{ editMode ? "Edit task" : "Create task" }}</p>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      class="form-control"
+      id="name"
+      name="name"
+      placeholder="This is example name"
+      required
+      [ngModel]="editMode ? currentTask?.name : null"
+      #name="ngModel"
+    />
+    <ul class="form-errors" *ngIf="name.valid || this.formTouched">
+      <li *ngIf="name.errors?.['required']">Name of the task is required</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input
+      class="form-control"
+      id="description"
+      name="description"
+      placeholder="This is example description"
+      [ngModel]="editMode ? currentTask?.description : null"
+      #description="ngModel"
+    />
+  </div>
+  <button>{{ editMode ? "Update" : "Save" }}</button>
+</form>

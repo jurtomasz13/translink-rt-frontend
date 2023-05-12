@@ -1,0 +1,15 @@
+<div class="container" *ngIf="!!task">
+  <p class="name" [ngClass]="task.isDone ? 'done' : ''">
+    {{ task.name }}
+  </p>
+  <p class="description" *ngIf="task?.description">
+    {{ task.description }}
+  </p>
+  <div class="buttons">
+    <button (click)="onStatusChange()">
+      {{ task.isDone ? "Set in progress" : "Set as done" }}
+    </button>
+    <button routerLink="/tasks/{{ task._id }}/edit">Edit</button>
+    <button (click)="onDelete()">Delete</button>
+  </div>
+</div>

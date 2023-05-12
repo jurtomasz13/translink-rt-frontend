@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="tasks" *ngIf="!!tasks">
+    <app-task *ngFor="let task of tasks" [task]="task" />
+  </div>
+  <div *ngIf="isFetching">Loading...</div>
+  <div class="not-found" *ngIf="!this.isFetching && !tasks">
+    You don't have any tasks
+  </div>
+</div>
