@@ -1,0 +1,74 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      class="form-control"
+      type="email"
+      id="email"
+      name="email"
+      placeholder="megan.fox@example.com"
+      email
+      required
+      ngModel
+      #email="ngModel"
+    />
+    <ul
+      class="form-errors"
+      *ngIf="(!email.valid && email.touched) || this.formTouched"
+    >
+      <li *ngIf="email.errors?.['required']">Email is required.</li>
+      <li *ngIf="email.errors?.['email']">Email must be valid.</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      class="form-control"
+      type="password"
+      id="password"
+      name="password"
+      placeholder="password"
+      minlength="6"
+      required
+      ngModel
+      #password="ngModel"
+    />
+    <ul
+      class="form-errors"
+      *ngIf="(!password.valid && password.touched) || this.formTouched"
+    >
+      <li *ngIf="password.errors?.['required']">Password is required.</li>
+      <li *ngIf="password.errors?.['minlength']">
+        Password must be at least 6 characters long.
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="repeat-password">Repeat password</label>
+    <input
+      class="form-control"
+      type="password"
+      id="repeat-password"
+      name="repeat-password"
+      placeholder="password"
+      minlength="6"
+      required
+      ngModel
+      #passwordRepeat="ngModel"
+    />
+    <ul
+      class="form-errors"
+      *ngIf="
+        (!passwordRepeat.valid && passwordRepeat.touched) ||
+        passwordRepeat.value !== password.value
+      "
+    >
+      <li *ngIf="passwordRepeat.errors?.['required']">Password is required.</li>
+      <li *ngIf="passwordRepeat.value !== password.value">
+        Passwords must be the same.
+      </li>
+    </ul>
+  </div>
+
+  <button>Submit</button>
+</form>
