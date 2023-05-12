@@ -1,0 +1,16 @@
+<div class="container">
+  <ng-container *ngIf="isAuthenticated">
+    <p class="welcome">Welcome, {{ userEmail }}</p>
+    <a routerLink="tasks" routerLinkActive="active">Tasks</a>
+    <a routerLink="tasks/create" routerLinkActive="active">Create</a>
+    <a (click)="authService.logout()">Logout</a>
+  </ng-container>
+  <ng-container class="unauthorized" *ngIf="!isAuthenticated">
+    <div *ngIf="isLogin">
+      <a (click)="navigateToRegister()">Register</a>
+    </div>
+    <div *ngIf="!isLogin">
+      <a (click)="navigateToLogin()">Login</a>
+    </div>
+  </ng-container>
+</div>

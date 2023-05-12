@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  font-size: 20px;
+  background-color: #f8f9fa;
+
+  .welcome {
+    padding-left: 20px;
+    margin-right: auto;
+  }
+
+  a {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  div {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
